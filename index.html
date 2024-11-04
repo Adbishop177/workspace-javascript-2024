@@ -14,14 +14,14 @@
 <body>
     <div class="wrapper">
         <div class="panelLeft">
-            
+
         </div>
 
         <div class="practice">
             <h1>Hello world in JavaScript
             </h1>
             <p>
-                Please display a hello world message in JavaScript. 
+                Please display a hello world message in JavaScript.
                 <script>
                     document.title = "JavaScript Basic -- In class practice -- Andrew Bishop";
                     // use document.write to display a message
@@ -31,9 +31,9 @@
                     console.log("this is for debugging");
                 </script>
             </p>
-            <p> Please import external file hello.js here. 
+            <p> Please import external file hello.js here.
                 <script src="js/hello.js"></script>
-                
+
             </p>
         </div>
 
@@ -41,28 +41,28 @@
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
             <script>
-                var a =parseInt("10");
-                var b=5.6;
-                var c=a+b;
-                var d=a*b;
-                var e=a%b;
-                var f=a-b;
-                var g=a/b
-                document.write("<p> a + b ="+c+"</p>");
-                document.write("<p> a * b ="+d+"</p>");
-                document.write("<p> a % b ="+e+"</p>");
-                document.write("<p> a - b ="+f+"</p>");
-                document.write("<p> a / b ="+g+"</p>");
+                var a = parseInt("10");
+                var b = 5.6;
+                var c = a + b;
+                var d = a * b;
+                var e = a % b;
+                var f = a - b;
+                var g = a / b
+                document.write("<p> a + b =" + c + "</p>");
+                document.write("<p> a * b =" + d + "</p>");
+                document.write("<p> a % b =" + e + "</p>");
+                document.write("<p> a - b =" + f + "</p>");
+                document.write("<p> a / b =" + g + "</p>");
             </script>
             <script>
-                var h="5.6";
-                var i=5.7;
+                var h = "5.6";
+                var i = 5.7;
                 console.log(typeof h);
                 console.log(typeof i);
-                const message="great";
-                let greeting="hi";
-                if (true){
-                    let greeting="ok";
+                const message = "great";
+                let greeting = "hi";
+                if (true) {
+                    let greeting = "ok";
                 }
                 console.log(greeting);
             </script>
@@ -73,13 +73,13 @@
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
 
-            <p> Write an image to the page 
+            <p> Write an image to the page
                 <script>
                     document.write("<img src=\"img/die1.png\">");
                 </script>
             </p>
 
-            <p> Write a table to the page 
+            <p> Write a table to the page
                 <script>
                     //document.write("<table bordser=\"1\"> ")
                 </script>
@@ -93,7 +93,7 @@
             <script>
                 //window.alert("pop up alert window");
                 //alert("another alert");
-                //window.location.assign("https://www.google.com")
+                //window.location.assign("https://www.google.com");
             </script>
 
         </div>
@@ -112,8 +112,17 @@
             <p id="p1"> Paragraph Number One </p>
             <p id="p2"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            <p>Please write JavaScript code to change the content of each paragraph.​</p>
+            <script>
+                //change the first paragraph
+                const pOne = document.getElementById("p1");
+                pOne.textContent = "I changed";
+                const pTwo = document.getElementById("p2");
+                pTwo.innerHTML = "<b>Bold</b>";
+                const pThree = document.getElementById("p3");
+                pThree.innerHTML = "<i>Italics</i>";
+
+            </script>
 
 
         </div>
@@ -123,13 +132,20 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                    const input1 = document.getElementsByName('num1')[0];
+                    console.log("get the first input " + input1.value);
+                    var a = parseFloat(input1.value);
+                    const input2 = document.getElementsByName('num2')[0];
+                    console.log("get the second input " + input2.value);
+                    var b = parseFloat(input2.value);
+                    var c = a + b;
+                    const resultL = document.getElementById('result');
+                    resultL.textContent = " " + c;
                 }
             </script>
             <p> <input type="text" name="num1" /> + <input type="text" name="num2">
                 <input type="button" value="=" onclick="calculate();">
-                <label id="result"> ? </label>
+                <label id="result"> </label>
             </p>
 
         </div>
@@ -143,7 +159,7 @@
                     </label>
                 </p>
 
-                <p id="message">
+                <p id="checkmessage">
 
                 </p>
 
@@ -153,14 +169,37 @@
                     </label>
                 </p>
             </form>
+            <script>
+                //
+                function welcome() {
+                    //alert("thank you!");
+                    const namebox = document.getElementById('cName');
+                    var newmessage = "welcome " + namebox.value + ", you are a new customer";
+                    document.getElementById('checkmessage').textContent = newmessage;
+                }
+                //binding --- register
+                const nameE = document.getElementById('cName');
+                nameE.addEventListener('blur', welcome);
+            </script>
 
         </div>
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <input type="text" id="squarenum" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="squareresult"> ? </label>
+            <script>
+                function dosquare(){
+                    const squareE = document.getElementById('squarenum');
+                    var number = parseInt(squareE.value);
+                    console.log("the square number is " + number);
+                    var newnum = number * number;
+                    document.getElementById("squareresult").textContent = " " + newnum;
+                }
+                const squareE = document.getElementById("squarenum");
+                squareE.addEventListener('blur',dosquare);
+            </script>
 
         </div>
 
@@ -168,13 +207,22 @@
             <h1> Difference between textcontent and innerHTML</h1>
             <p> HTML Try it Editor </p>
             <p>ENTER your code </p>
-            <textarea cols="40" rows="20" id="code">  
+            <textarea cols="40" rows="20" id="code">
 
             </textarea>
 
-            <input type="button" id="tryit" value="Click and Display"> 
+            <input type="button" id="tryit" value="Click and Display">
 
-            <div id="message"> 
+            <div id="htmlcode">
+                <script>
+                    function convertHTML(){
+                        const codeE = document.getElementById('code');
+                        const htmlcodeE = document.getElementById('htmlcode')
+                        htmlcodeE.innerHTML = codeE.textContent;
+                        
+                    }
+                    document.getElementById('tryit').addEventListener('click',convertHTML);
+                </script>
             </div>
 
 
@@ -187,12 +235,14 @@
                 <select id="year">
                     <option> 2003</option>
                     <option> 2004</option>
-                </select>.</p>
+                </select>.
+            </p>
             <p>Please enter the condition of the car
                 <select id="condition">
                     <option> Fair</option>
                     <option> Good</option>
-                </select>.</p>
+                </select>.
+            </p>
 
             <p id="price">
 
@@ -337,9 +387,9 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
-			<script>
-				
-			</script>
+            <script>
+
+            </script>
 
 
         </div>
@@ -381,10 +431,10 @@
 
 
         <div class="practice">
-            <h1>  HTML Canvas </h1>
+            <h1> HTML Canvas </h1>
             <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-                    Your browser does not support the HTML5 canvas tag.</canvas>
-            <div id="drawing">  </div>
+                Your browser does not support the HTML5 canvas tag.</canvas>
+            <div id="drawing"> </div>
             <p> Some P5.js examples </p>
             <script src="https://cdn.jsdelivr.net/npm/p5@1/lib/p5.min.js"></script>
             <script src="js/draw.js"></script>

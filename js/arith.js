@@ -14,4 +14,3 @@ var c = n1 + n2;
 
 //display
 document.write(c);
-alert(c);
