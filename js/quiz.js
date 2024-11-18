@@ -13,3 +13,19 @@ var A = document.querySelector('[value="1"]').nextSibling.nodeValue=M.toString()
 var B = document.querySelector('[value="2"]').nextSibling.nodeValue=M.toString()+"-"+S;
 var C = document.querySelector('[value="3"]').nextSibling.nodeValue=M.toString()+"+"+T;
 var A = document.querySelector('[value="4"]').nextSibling.nodeValue=M.toString() +"-"+N.toString()+"-"+K.toString();
+function changeStyle(e){
+    e.preventDefault();
+    var classname = this.getAttribute("class");
+    //alert("clicked class"+classname);
+    if (classname == "answer"){
+        this.setAttribute("class","answer selected");
+    }
+    else{
+        this.setAttribute("class","answer Deselected");
+    }
+    this.animate([{transform:'rotate(0deg)'},{transform:'rotate(180deg)'}],{duration:3000, fill:'forwards'});
+}
+var answerlist = document.getElementsByClassName('answer');
+for(var i = 0; i<4; i++){
+    answerlist[i].addEventListener('click', changeStyle, false);
+}
